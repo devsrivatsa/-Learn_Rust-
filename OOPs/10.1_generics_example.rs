@@ -25,10 +25,21 @@ where
 
 fn main() {
     let integers = vec![1,2,3,4,5,6,7,8,9,10];
-    let integer_result = integers.as_slice().has_prefix(&[3,4,5]);
+    let integer_result = integers
+                            .as_slice()
+                            .has_prefix(&[3,4,5]);
     dbg!(integer_result); 
 
     let floats = vec![1.0, 4.0, 5.0, 7.0];
-    let float_result = floats.as_slice().has_prefix(&[5.2, 7.0]);
+    let float_result = floats
+                        .as_slice()
+                        .has_prefix(&[5.2, 7.0]);
     dbg!(float_result);
+
+    //simpler way to solve the problem
+    let simple_interger_solution = integers
+                                    .windows(3)
+                                    .find(|win| win == &[3,4,5])
+                                    .is_some();
+    dbg!(simple_interger_solution);
 }
